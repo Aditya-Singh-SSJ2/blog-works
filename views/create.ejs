@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<%- include('./templates/head.ejs') %>
+<%- include('./templates/nav.ejs') %>
+<body>
+
+<h1 style="background-color: red;">Create Post</h1>
+
+<div class="form-main">
+    <form action="/blogs" method="POST">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" name="title" required>
+
+            <label for="snippet" class="form-label">Snippet</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="snippet" required>
+
+            <label for="body" class="form-label">Body</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" name="body"> </textarea>
+        </div>
+        <button class="btn btn-primary">Post</button>
+    </form>  
+</div>
+
+
+
+</body>
+<%- include('./templates/footer.ejs') %>
+</html>
