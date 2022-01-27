@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const Blog = require('./models/blog');
+const { render } = require('express/lib/response');
 
 const app = express();
 
@@ -25,8 +26,8 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.get('/', (req, res) => {
-    var blogs = [{"title": "heyy", "snippet": "aditya is making this"}];
-    res.render('index', {title: "Home", blogs });
+    // res.render('index', {title: "Home" })
+    res.redirect('/blogs');
 })
 
 app.get('/about', (req, res) => {
@@ -56,8 +57,10 @@ app.post('/blogs', (req, res) => {
 app.get('/blogs/:id', (req, res) => {
     const id = req.params.id;
     Blog.findById(id, (err, data) => {
-        if (err) console.error(err);
-        res.render('details', {title: "Blog Details", blog: data });
+        if (err) res.status(404).render("404", {title: "404"})
+        else{
+            res.render('details', {title: "Blog Details", blog: data }); 
+        } 
     })
 })
 
