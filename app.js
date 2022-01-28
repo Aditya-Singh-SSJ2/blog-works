@@ -7,7 +7,7 @@ const { render } = require('express/lib/response');
 const app = express();
 
 // Connect to MongoDB
-const dbURI = 'mongodb+srv://aditya:abcd@cluster0.rkhve.mongodb.net/nodeTuts?retryWrites=true&w=majority'
+const dbURI = 'mongodb+srv://<user-name>:<password>@<cluster-name>.rkhve.mongodb.net/nodeTuts?retryWrites=true&w=majority'
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then((result) => {
         console.log('connected to db');  
